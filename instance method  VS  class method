@@ -1,0 +1,18 @@
+
+      Instance Method
+      ________________
+
+1 . Inside Instance Method we can have Instance variable(individual object variable) & Static variable (class level variable).
+
+2 . No Decorator is used for Instance method.
+
+3 . Self keyword is used .(reference to the current object)
+
+4 . We can access instance method using Object reference only.
+
+      Class Method
+    ________________
+1 . Inside Instance Method we can only have static variable.
+2 . @classmethod decorator is used.
+3 . cls keyword is used. (pvm(python virtual machine) created separate class object which have all class level data members which reference point is cls)
+4 . we can access class method by object reference or by class name.
