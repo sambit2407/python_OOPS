@@ -1,45 +1,62 @@
+#bank name
+#check balance
+#deposit amount
+#withdrawl
 class Bank:
-    bank_name='SAMBIT-BANK-PVT.LTD'
+    '''bank name would be same for all instance(static variable)'''
+    bank_name='State Bank Of India'
+    #first method will run when instance is created
     def __init__(self,name,balance=0.0):
         self.name=name
         self.balance=balance
 
-    def deposit(self,balance):
-
-        self.balance=self.balance+balance
-        print(f'Your account balance after deposit is{self.balance}')
-
     def check_balance(self):
-        print(f"Your current Account balance is {self.balance}")
+        print(f'Your current account balance is : {self.balance}')
 
-    def withdraw(self,balance):
-        if self.balance<balance:
-            print("Insufficient funds!!")
+    def deposit(self,bal):
+        self.balance=self.balance+bal
+        print('Cash deposited successfully !!')
+        print(f'After deposit Your current account balance is  {self.balance}')
+
+    def withdraw(self,bal):
+        if bal<=self.balance:
+            self.balance = self.balance - bal
+            print('Transaction successful !!')
         else:
-            self.balance=self.balance-balance
+            print('Insufficient Funds !!')
+    @classmethod
+    def change_bankName(cls):
+        cls.bank_name='  Axis Bank '
+    @staticmethod
+    def welcome_msg():
+        print(f'Welcome {name} to {Bank.bank_name} ')
 
 
 
-name=input('Please Enter your name')
 
-bank=Bank(name)
-print(f'Hi {name}Welcome to {Bank.bank_name}')
+
+name= input('Please Enter Your name : ')
+person1=Bank(name)
+Bank.change_bankName()
+Bank.welcome_msg()
+
+
 while True:
-    inp=input('Chose Option --->>\nd-Deposit\nw-Withdraw\nc-CheckBalance\nq-Quit\n ')
+    inp=input('Please choose the option \nc : check balance \nd :deposit \nw : withdraw \nq : quit\n')
+    if inp=='c':
+        person1.check_balance()
+    elif inp=='d':
+        bal=float(input('Enter the deposit amount : '))
+        person1.deposit(bal)
+    elif inp=='w':
+        bal=float(input('Enter the withdraw amount : '))
+        person1.withdraw(bal)
 
-    if inp.lower()=='d':
-        balance=float(input('Enter Amount to deposit : '))
-        bank.deposit(balance)
-    elif inp.lower()=='w':
-        balance=float(input('Enter Amount to withdraw : '))
-        bank.withdraw(balance)
-    elif inp.lower()=='c':
-        bank.check_balance()
-    elif inp.lower()=='q':
-        print(f'Thanks for Visiting {Bank.bank_name}')
+    elif inp=='q':
         break
+
     else:
-        print('Please select  Valid option. ')
+        print('please Enter valid option..')
 
 
 
